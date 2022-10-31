@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { ListItem } from "./ListItem";
 
 function Menu({
@@ -15,13 +16,18 @@ function Menu({
           getItemProps={getItemProps}
           item={item}
           index={index}
-          selectedItem={selectedItem}
-          highlightedIndex={highlightedIndex}>
+          isSelected={selectedItem?.id === item.id}
+          isHighlighted={highlightedIndex === index}
+          // selectedItem={selectedItem}
+          // highlightedIndex={highlightedIndex}
+        >
           {item.name}
         </ListItem>
       ))}
     </ul>
   );
 }
+
+Menu = memo(Menu);
 
 export { Menu };
