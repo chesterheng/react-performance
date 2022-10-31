@@ -6,10 +6,11 @@
   - use React lazy and Suspend
   - eager loading (onMouseEnter or onFocus)
   - webpack magic comments (prefetch)
-  - Network tool
+  - Network Coverage tool
 - Reduce render time
+  - target JS execution (16ms per frame)
   - useMemo hook
-  - target 16ms per frame
+  - put expensive function into a web worker
   - Performance tool
 - Avoid re-render
   - useCallback hook
