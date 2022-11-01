@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { ListItem } from "./ListItem";
+import ListItem from "./ListItem";
 
 function Menu({
   items,
@@ -28,6 +28,4 @@ function Menu({
   );
 }
 
-Menu = memo(Menu);
-
-export { Menu };
+export default memo(Menu);

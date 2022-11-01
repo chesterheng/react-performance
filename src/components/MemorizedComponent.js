@@ -3,7 +3,7 @@ import { useForceRerender } from "../hooks/useForceRerender";
 import { useAsync, STATUS } from "../hooks/useAsync";
 import { useCombobox } from "../hooks/useCombobox";
 import { getItems } from "../utils/workerizedFilterCities";
-import { Menu } from "./Menu";
+import Menu from "./Menu";
 
 function MemorizedComponent() {
   const forceRerender = useForceRerender();

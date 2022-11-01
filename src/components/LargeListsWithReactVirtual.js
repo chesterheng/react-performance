@@ -1,22 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useVirtual } from "react-virtual";
 import { useCombobox } from "../hooks/useCombobox";
-import { useForceRerender } from "../hooks/useForceRerender";
-import { useAsync, STATUS } from "../hooks/useAsync";
 import { getItems } from "../utils/workerizedFilterCities";
-import Menu from "./Menu";
+import { useAsync, STATUS } from "../hooks/useAsync";
+import { useForceRerender } from "../hooks/useForceRerender";
+import { MenuWithReactVirtual as Menu } from "../components/MenuWithReactVirtual";
 
-function ExpensiveFunctionWithWebWorker() {
+function LargeListsWithReactVirtual() {
   const forceRerender = useForceRerender();
   const [inputValue, setInputValue] = useState("");
-  const { data: allItems, run } = useAsync({
-    data: [],
-    status: STATUS.PENDING,
-  });
 
+  const { data: items, run } = useAsync({ data: [], status: STATUS.PENDING });
   useEffect(() => {
     run(getItems(inputValue));
   }, [inputValue, run]);
-  const items = allItems.slice(0, 100);
+
+  const listRef = useRef();
+
+  const rowVirtualizer = useVirtual({
+    size: items.length,
+    parentRef: listRef,
+    estimateSize: useCallback(() => 20, []),
+    overscan: 10,
+  });
 
   const {
     selectedItem,
@@ -36,6 +42,9 @@ function ExpensiveFunctionWithWebWorker() {
         selectedItem ? `You selected ${selectedItem.name}` : "Selection Cleared"
       ),
     itemToString: (item) => (item ? item.name : ""),
+    scrollIntoView: () => {},
+    onHighlightedIndexChange: ({ highlightedIndex }) =>
+      highlightedIndex !== -1 && rowVirtualizer.scrollToIndex(highlightedIndex),
   });
 
   return (
@@ -55,10 +64,13 @@ function ExpensiveFunctionWithWebWorker() {
           getItemProps={getItemProps}
           highlightedIndex={highlightedIndex}
           selectedItem={selectedItem}
+          listRef={listRef}
+          virtualRows={rowVirtualizer.virtualItems}
+          totalHeight={rowVirtualizer.totalSize}
         />
       </div>
     </div>
   );
 }
 
-export { ExpensiveFunctionWithWebWorker };
+export { LargeListsWithReactVirtual };

@@ -20,7 +20,6 @@ function ListItem({
         style: {
           fontWeight: isSelected ? "bold" : "normal",
           backgroundColor: isHighlighted ? "lightgray" : "inherit",
-          fontWeight: isSelected ? 'bold' : 'normal',
         },
         ...props,
       })}
@@ -28,8 +27,7 @@ function ListItem({
   );
 }
 
-ListItem = memo(ListItem, 
-// (prevProps, nextProps) => {
+// ListItem = memo(ListItem, (prevProps, nextProps) => {
 //   // true means do NOT rerender
 //   // false means DO rerender
 
@@ -48,7 +46,7 @@ ListItem = memo(ListItem,
 //     return wasPrevHighlighted === isNowHighlighted;
 //   }
 //   return true;
-// }
-);
+// });
 
 export { ListItem };
+export default memo(ListItem);

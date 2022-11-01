@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useCombobox } from "../hooks/useCombobox";
 import { useForceRerender } from "../hooks/useForceRerender";
 import { getItems } from "../utils/filterCities";
-import { Menu } from "../components/Menu";
+import Menu from "../components/Menu";
 
 function ExpensiveFunction() {
   const forceRerender = useForceRerender();
