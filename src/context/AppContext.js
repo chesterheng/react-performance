@@ -13,7 +13,6 @@ AppDispatchContext.displayName = "AppDispatchContext";
 
 function AppProvider({ children }) {
   const [state, dispatch] = useReducer(appReducer, {
-    dogName: "",
     grid: initialGrid,
   });
   // const value = useMemo(() => [state, dispatch], [state])

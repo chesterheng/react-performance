@@ -1,14 +1,15 @@
-import { APP_ACTIONS } from "../reducers/appReducer";
-import { useAppState, useAppDispatch } from "../context/AppContext";
+import { useDogState } from "../context/DogContext";
+import { DOG_ACTIONS } from "../reducers/dogReducer";
 
 function DogNameInput() {
-  const state = useAppState();
-  const dispatch = useAppDispatch();
+  const [state, dispatch] = useDogState();
   const { dogName } = state;
+  // const [dogName, setDogName] = useState("");
 
   function handleChange(event) {
     const newDogName = event.target.value;
-    dispatch({ type: APP_ACTIONS.TYPED_IN_DOG_INPUT, dogName: newDogName });
+    dispatch({ type: DOG_ACTIONS.TYPED_IN_DOG_INPUT, dogName: newDogName });
+    // setDogName(newDogName);
   }
 
   return (

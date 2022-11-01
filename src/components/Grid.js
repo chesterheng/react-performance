@@ -3,7 +3,9 @@ import { useAppDispatch } from "../context/AppContext";
 import { useDebouncedState } from "../hooks/useDebouncedState";
 import { APP_ACTIONS } from "../reducers/appReducer";
 import AppGrid from "./AppGrid";
-import Cell from "./Cell";
+// import Cell from "./MemoCell";
+// import Cell from "./LimitCell";
+import Cell from "./withStateSlice";
 
 function Grid() {
   const dispatch = useAppDispatch();

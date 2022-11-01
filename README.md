@@ -16,6 +16,7 @@
   - useCallback, useMemo
   - memo
   - primitive props
-  - split context
+  - separate contexts
+  - colocation
   - react profiler tool
 - [Questions](https://www.notion.so/chesterheng/React-Performance-3a65b8935e2b4b1db0598da6129b2cc2) 

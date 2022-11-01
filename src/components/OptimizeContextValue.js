@@ -1,5 +1,6 @@
 import { useForceRerender } from "../hooks/useForceRerender";
 import { AppProvider } from "../context/AppContext";
+import { DogProvider } from "../context/DogContext";
 import DogNameInput from "../components/DogNameInput";
 import Grid from "../components/Grid";
 
@@ -8,12 +9,14 @@ function OptimizeContextValue() {
   return (
     <div className="grid-app">
       <button onClick={forceRerender}>force rerender</button>
-      <AppProvider>
-        <div>
+      <div>
+        <DogProvider>
           <DogNameInput />
+        </DogProvider>
+        <AppProvider>
           <Grid />
-        </div>
-      </AppProvider>
+        </AppProvider>
+      </div>
     </div>
   );
 }
