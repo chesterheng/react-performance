@@ -4,13 +4,15 @@ import { ExpensiveFunctionWithWebWorker } from "./components/ExpensiveFunctionWi
 import { MemorizedComponent } from "./components/MemorizedComponent";
 import { LargeListsWithReactVirtual } from "./components/LargeListsWithReactVirtual";
 import { OptimizeContextValue } from "./components/OptimizeContextValue";
+import { PerformanceMonitor } from "./components/PerformanceMonitor";
+import { UseCallbackDemo } from "./components/UseCallbackDemo";
 
 import "./App.css";
 
 function App() {
   return (
     <>
-      <OptimizeContextValue />
+      <UseCallbackDemo />
     </>
   );
 }

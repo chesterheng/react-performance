@@ -17,5 +17,10 @@ export function getItems(filter) {
   });
 }
 
+// Measure JavaScript Execution Time
+// console.time('Execution Time');
+// functionToBeMeasured();
+// console.timeEnd('Execution Time');
+
 // This is to avoid some issues https://github.com/kentcdodds/react-performance/issues/115
 export default class makeFilterCitiesWorker {}
